@@ -13,6 +13,7 @@ from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty
 
 from kivy.factory import Factory
+import labelb
 
 #class GetRuningTime(Label):
 #    pass

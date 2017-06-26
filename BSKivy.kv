@@ -26,26 +26,35 @@ BSdemoRoot:
                 size_hint_x: 1
                 on_press: root.get_apptime()
         BoxLayout:
-            Label:
-                bcolor: 1,0,0,1
+            LabelB:
+                bcolor: 0, 1, 0, .5
                 text: "Streaming Cube Events"
-                size_hint_x: 1
         BoxLayout:
             Label:
                 text: "Last Recived Time(Sec)"
-                size_hint_x: 1
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
             Label:
                 text: "Classification Type"
-                size_hint_x: 1
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
             Label:
                 text: "Session Time Remaining (Sec)"
-                size_hint_x: 1
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
             Label:
                 text: "View Details"
-                size_hint_x: 1
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
             Label:
                 text: "Actions"
-                size_hint_x: 1
+                size_hint_y: None
+                text_size: self.width, None
+                height: self.texture_size[1]
         BoxLayout:
             Label:
                 text: "8.2345"
