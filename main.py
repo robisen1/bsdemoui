@@ -9,7 +9,6 @@ import random
 import time
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
-from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty
 
 from kivy.factory import Factory
@@ -23,10 +22,12 @@ class BSdemoRoot(BoxLayout):
 #class my widget
 class BSdemoForm(BoxLayout):
     bsdemo_currenttime = StringProperty()
-    #bsdemo_currenttime = "12"
+    #this needs to actually be a method that starts and stips the server
+    # then keeps track of how long the system has been running so it needs a
+    # clock counter or paged periodic update
     def __init__(self, **kwargs):
         super(BSdemoForm, self).__init__(**kwargs)
-        self.bsdemo_currenttime = str(random.randint(1, 100))
+        self.bsdemo_currenttime = "0"
 
     def get_apptime(self):
         self.bsdemo_currenttime = time.asctime()
