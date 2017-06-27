@@ -22,6 +22,7 @@ class BSdemoRoot(BoxLayout):
 #class my widget
 class BSdemoForm(BoxLayout):
     bsdemo_currenttime = StringProperty()
+    device_data = ObjectProperty()
     #this needs to actually be a method that starts and stips the server
     # then keeps track of how long the system has been running so it needs a
     # clock counter or paged periodic update
@@ -31,6 +32,15 @@ class BSdemoForm(BoxLayout):
 
     def get_apptime(self):
         self.bsdemo_currenttime = time.asctime()
+        sys_data = self.get_devicedata()
+
+    def get_devicedata(self):
+        mytestdata = ['8.243, DJI Mavic, 4.39', '5.243, Parrot BeBop, Close', '2, Parrot Sumo, 2.3555']
+        self.device_data.adapter.data[:]
+        self.device_data.adapter.data.extend(mytestdata)
+        self.device_data._trigger_reset_populate()
+
+# add some mock device data. this will need to be some sort of MQTT push latter
 
 class BSKivyApp(App):
     pass
