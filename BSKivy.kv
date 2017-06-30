@@ -1,12 +1,37 @@
 #: import ListItemLabel kivy.uix.listview.ListItemLabel
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
+<PlayerRecord>:
+    size_hint_y: None
+    height: '30dp'
+    width: '100dp'
+
+    canvas.before:
+        Color:
+            rgb: 0.2, 0.2, 0.2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<TableHeader>:
+    size_hint_y: None
+    height: '30dp'
+    width: '100dp'
+
+    canvas.before:
+        Color:
+            rgb: 0.5, 0.5, 0.5
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+            
 BSdemoRoot:
 <BSdemoRoot>:
     BSdemoForm
 <BSdemoForm>
     orientation: "vertical"
-    device_data: device_data_results
+    #device_data: device_data_results
     BoxLayout:
         orientation: "vertical"
         BoxLayout:
@@ -25,44 +50,16 @@ BSdemoRoot:
                 text: "Start / Stop"
                 size_hint_x: 1
                 on_press: root.get_apptime()
+        ScrollView:
+            size_hint_y: None
+            height: '200dp'
+
+            MyGrid:
+                cols: 3
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: '1dp'
+
         BoxLayout:
-            LabelB:
-                bcolor: 0, 1, 0, .5
-                text: "Streaming Cube Events"
-        BoxLayout:
             Label:
-                text: "Last Recived Time(Sec)"
-                size_hint_y: None
-                text_size: self.width, None
-                height: self.texture_size[1]
-            Label:
-                text: "Classification Type"
-                size_hint_y: None
-                text_size: self.width, None
-                height: self.texture_size[1]
-            Label:
-                text: "Session Time Remaining (Sec)"
-                size_hint_y: None
-                text_size: self.width, None
-                height: self.texture_size[1]
-            Label:
-                text: "View Details"
-                size_hint_y: None
-                text_size: self.width, None
-                height: self.texture_size[1]
-            Label:
-                text: "Actions"
-                size_hint_y: None
-                text_size: self.width, None
-                height: self.texture_size[1]
-        BoxLayout:
-            ListView:
-                id: device_data_results
-                adapter:
-                    ListAdapter(data=[], cls=ListItemLabel)
-#            Button:
-#                text: "Da Poop"
-#                size_hint_x: 1
-#            Button:
-#                text: "TJ poop"
-#                size_hint_x: 1
+                text: "replace with a button"

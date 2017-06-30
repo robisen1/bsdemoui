@@ -7,6 +7,6 @@ Devices we expect for the Demo.
 
 ToDo:
 
-Update to dynamic labels
+Switch device layout to a dynamic grid layout
 Create update methods
 Create stubbed services to be wired in ZMQ or MQTT services
