@@ -2,6 +2,7 @@
 #: import ListAdapter kivy.adapters.listadapter.ListAdapter
 
 <PlayerRecord>:
+    id: myplayer
     size_hint_y: None
     height: '30dp'
     width: '100dp'
@@ -14,6 +15,7 @@
             size: self.size
 
 <TableHeader>:
+    id: myheader
     size_hint_y: None
     height: '30dp'
     width: '100dp'
@@ -25,7 +27,7 @@
             pos: self.pos
             size: self.size
 
-            
+
 BSdemoRoot:
 <BSdemoRoot>:
     BSdemoForm
@@ -45,11 +47,12 @@ BSdemoRoot:
                 id: app_runtime_label
                 text: root.bsdemo_currenttime
                 size_hint_x: 1
-            Button:
+            Switch:
                 id: startbutton
-                text: "Start / Stop"
-                size_hint_x: 1
-                on_press: root.get_apptime()
+#                text: "Start / Stop"
+#                size_hint_x: 1
+                on_active: root.get_apptime(self, self.active)
+                # ; app.root.MyGrid.display_data(self)
         ScrollView:
             size_hint_y: None
             height: '200dp'

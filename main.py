@@ -3,10 +3,16 @@ import time
 from kivy.app import App
 from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty
+from kivy.properties import BooleanProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
+
+#custom and helper classes
+
 import labelb
+import DeviceData
+#import AppState
 
 
 class TableHeader(Label):
@@ -20,12 +26,16 @@ class PlayerRecord(Label):
 class BSdemoRoot(BoxLayout):
     pass
 
+myappstate = BooleanProperty()
+myappstate = False
 
 # class my widget
 class BSdemoForm(BoxLayout):
     bsdemo_currenttime = StringProperty()
     device_data = ObjectProperty()
 
+
+#    AppState.app_tog = False
     # this needs to actually be a method that starts and stips the server
     # then keeps track of how long the system has been running so it needs a
     # clock counter or paged periodic update
@@ -33,14 +43,24 @@ class BSdemoForm(BoxLayout):
         super(BSdemoForm, self).__init__(**kwargs)
         self.bsdemo_currenttime = "0"
 
-    def get_apptime(self):
-        self.bsdemo_currenttime = time.asctime()
+    def get_apptime(self, instance, value):
+        myappstate = value
+
+        if myappstate == True:
+            self.bsdemo_currenttime = time.asctime()
+            #MyGrid.display_data()
+            print(myappstate)
+        else:
+            self.bsdemo_currenttime = "0"
+            print(myappstate)
         # sys_data = self.get_devicedata()
 
+#create a data manager class
 
 class MyGrid(GridLayout):
     def __init__(self, **kwargs):
         super(MyGrid, self).__init__(**kwargs)
+
         self.get_tableheaders()
         self.get_devicedata()
         self.display_data()
@@ -62,28 +82,31 @@ class MyGrid(GridLayout):
             {'LRT': '2', 'Type': 'Parrot Sumo', 'STR': '2.3555'}
         ]
 
+# assembles the items to be pushed into the gridlayout widget
     def display_data(self):
         self.clear_widgets()
-
+        print(myappstate)
         for myi in xrange(len(self.tabledata)):
             print("did it run")
             myrow = self.create_header(myi)
             for myitem in myrow:
                 self.add_widget(myitem)
 
-        for i in xrange(len(self.data)):
+        if myappstate == True:
+            for i in xrange(len(self.data)):
+                row = self.create_player_info(i)
+                #add all the items to the widget
+                for item in row:
+                    self.add_widget(item)
 
-            row = self.create_player_info(i)
-
-            for item in row:
-                self.add_widget(item)
-
+# this allows you to change the tableheader column names and number
     def create_header(self,i):
         first_column = TableHeader(text=self.tabledata[i]['LRT'])
         second_column = TableHeader(text=self.tabledata[i]['Type'])
         third_column = TableHeader(text=self.tabledata[i]['STR'])
         return [first_column, second_column, third_column]
 
+# puts the data into the right column to build the table
     def create_player_info(self, i):
         first_column = PlayerRecord(text=self.data[i]['LRT'])
         second_column = PlayerRecord(text=self.data[i]['Type'])
