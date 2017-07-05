@@ -27,12 +27,13 @@
             pos: self.pos
             size: self.size
 
-
 BSdemoRoot:
 <BSdemoRoot>:
     BSdemoForm
 <BSdemoForm>
     orientation: "vertical"
+    mygridwid_widget: mygridwid
+
     #device_data: device_data_results
     BoxLayout:
         orientation: "vertical"
@@ -51,13 +52,15 @@ BSdemoRoot:
                 id: startbutton
 #                text: "Start / Stop"
 #                size_hint_x: 1
-                on_active: root.get_apptime(self, self.active)
+                on_active: root.get_apptime(self, self.active, mygridwid)
+
                 # ; app.root.MyGrid.display_data(self)
         ScrollView:
             size_hint_y: None
             height: '200dp'
 
             MyGrid:
+                id: mygridwid
                 cols: 3
                 size_hint_y: None
                 height: self.minimum_height
