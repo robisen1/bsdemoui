@@ -21,7 +21,7 @@ import Cube_Replay_Generator as replay
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     # dir_path = '/opt/cube_sessions/cube_captures/session_3DR_solo'  # BSC1
-    dir_path = '/home/tj/z_to_slack/testdata'  # TJ laptop
+    dir_path = 'C:/Users/robis/Dropbox/dev/BSKivyUI/bsdemoui/testdata'  # TJ laptop
     cube_gen = replay.Cube_File_Player(scan_dir=dir_path,
                                 avg_pulse_rate_sec=1,
                                 pulse_rate_tolerance_percent=0.05)
